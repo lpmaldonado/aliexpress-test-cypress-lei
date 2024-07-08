@@ -10,15 +10,20 @@ This repository contains a Cypress test for verifying the availability of the se
 
 ## Setup
 
-1. Clone the repository:
-    git clone https://github.com/lpmaldonado/aliexpress-test-cypress-lei.git
-
-2. Install dependencies:
+## 1. Clone the repository:
+```
+git clone https://github.com/lpmaldonado/aliexpress-test-cypress-lei.git
+```
+## 2. Install dependencies:
+```
 npm install
-
-3. Open Cypress:
+```
+## 3. Open Cypress:
+```
 npx cypress open
+```
+## 4. Running the Test
 
-4. Running the Test
-In the Cypress Test Runner, select the aliExpress_test.spec.cy.js test file.
+In the Cypress Test Runner, select the _aliExpress_test.spec.cy.js_ test file.
+
 Cypress will execute the test and show the results.
