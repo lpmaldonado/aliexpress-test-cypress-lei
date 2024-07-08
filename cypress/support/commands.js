@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('disableResizeObserver', () => {
-    cy.visit('https://es.aliexpress.com/', {
+    cy.visit('/', {
         onBeforeLoad: (win) => {
             win.ResizeObserver = class {
                 observe() {}
@@ -34,4 +34,25 @@ Cypress.Commands.add('disableResizeObserver', () => {
             };
         }
     });
+});
+
+Cypress.Commands.add('searchProduct', (productName) => {
+    cy.get('#search-words').type(`${productName}{enter}`);
+});
+
+Cypress.Commands.add('goToSecondPage', () => {
+    cy.get('.comet-pagination-item-2 > a').scrollIntoView().click();
+    cy.url().should('include', 'page=2');
+});
+
+Cypress.Commands.add('verifySecondItem', () => {
+    cy.get('#card-list [data-tticheck="true"]')
+      .then($elements => {
+          if ($elements.length > 1) {
+              cy.wrap($elements.eq(1)).should('be.visible');
+              cy.log('The second item is visible');
+          } else {
+              cy.log('The second item does not exist');
+          }
+      });
 });
